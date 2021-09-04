@@ -1,13 +1,74 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,700&display=swap');
+
+*,
+*::after,
+*::before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+  font-size: 3.5rem;
+  color: #dfe6e9;
+}
+
+.calculator {
+  width: 60rem;
+  height: 60rem;
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translate(-50%, -50%);
+  background-color: #2d3436;
+  border-radius: 5px;
+  box-shadow: 1px 3px 25px rgba(0, 0, 0, 0.5);
+}
+
+.calculator__display {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 2rem;
+  font-size: 4.5rem;
+  color: #2d3436;
+  text-align: right;
+  background-color: #dfe6e9;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+.calculator__buttons {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 1rem;
+}
+.calculator__button {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: #636e72;
+  border-radius: 5px;
+  user-select:none;
+  cursor: pointer;
+}
+
+.calculator__button:active {
+  transform: scale(0.98);
+}
+
+.calculator__button--big {
+  grid-column: 4;
+  grid-row: 2 / 6;
+  background-color: #0984e3;
+  transform: scale(0.99);
 }
