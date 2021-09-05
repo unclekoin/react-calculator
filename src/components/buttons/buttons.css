@@ -20,10 +20,12 @@
   border-radius: 5px;
   user-select: none;
   cursor: pointer;
+  transition: all 0.1s linear;
 }
 
 .calculator__button:active {
   transform: scale(0.98);
+  color: #dfe6e9;
 }
 
 .calculator__button.big {
@@ -33,8 +35,10 @@
   color: #0984e3;
   text-shadow: 1px 1px rgb(134, 186, 225), -1px -1px rgb(6, 71, 121);
   background-color: #0984e3;
+  transition: all 0.2s linear;
 }
 
 .calculator__button.big:active {
   transform: scale(0.99);
+  color: #dfe6e9;
 }
