@@ -1,0 +1,21 @@
+.calculator__display {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 12rem;
+  margin-bottom: 1.5rem;
+  padding: 0 2.5rem;
+  font-size: 5.5rem;
+  color: #2d3436;
+  text-align: right;
+  line-height: 1;
+  background-color: #b2bec3;
+  border: 5px solid;
+  border-top-color: rgba(255, 255, 255, 0.9);
+  border-left-color: rgba(255, 255, 255, 0.7);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  border-right-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  overflow-x: auto;
+}
