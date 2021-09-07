@@ -1,16 +1,24 @@
 const computer = (a, b, action) => {
+  let result = 0;
+
   switch (action) {
     case 'plus':
-      return a + b;
+      result = a + b;
+      break;
     case 'minus':
-      return a - b;
+      result = a - b;
+      break;
     case 'multiply':
-      return a * b;
+      result = a * b;
+      break;
     case 'divide':
-      return a / b;
+      result = a / b;
+      break;
     default:
-      return;
+      return result;
   }
-}
+
+  return Number(result.toFixed(5));
+};
 
 export default computer;

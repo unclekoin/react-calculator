@@ -1,67 +1,99 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './calculator.css';
 import Buttons from './components/buttons';
 import Display from './components/display';
 import computer from './utils/computer';
 
 function App() {
-  const [number, setNumber] = useState('0');
-  const [result, setResult] = useState(0);
-  const [sign, setSign] = useState('');
+  const [number, setNumber] = useState('');
+  const [result, setResult] = useState('');
+  const [operator, setOperator] = useState('');
   const [dot, setDot] = useState(true);
+  const [expression, setExpression] = useState('');
 
-  const handleButtons = (id, symbol, type) => {
-    if (id === 'ac') {
-      setSign('');
+  useEffect(() => {
+    if (operator === 'equal') setExpression(result);
+    if (!operator && number) setExpression(number);
+    if (result === Infinity) clearDisplay();
+  }, [result, operator, number]);
+
+  const handleNumbers = (id, symbol) => {
+    if (number === '0' && id !== 'dot') setNumber('');
+    if (dot && !number && id === 'dot') {
       setNumber('0');
-      setResult(0);
     }
-
-    if (id === 'equal') {
-      setSign('');
-      setNumber('0');
-    }
-
-    if (!Number(number) && !result && symbol === '0') return;
-
     if (id === 'dot') setDot(false);
-
-    if (id === 'dot' && !dot) return;
-
-    if (type === 'number') {
-      setNumber((prev) =>
-        prev === '0' && id !== 'dot' ? (prev = symbol) : prev + symbol
-      );
+    if (!dot && id === 'dot') return;
+    if (operator === 'equal') {
+      setOperator('');
+      setResult('');
     }
+    if (number === '0' && symbol === '0' && dot) return;
 
-    if (!number && id === 'dot') setNumber('0.');
-
-
-    if (type === 'math') {
-      if (result && number) {
-        setResult(computer(Number(result), Number(number), sign));
-        setNumber('');
-        return;
-      }
-
-      if (number) {
-        setResult(number);
-        setNumber('');
-      }
-      
-      setDot(true);
-      setSign(id);
-    }
+    setNumber((prevNumber) => prevNumber + symbol);
   };
 
-  console.log('number', number);
-  console.log('result', result);
-  console.log('sign', sign);
-  console.log('-----------------');
+  const handleOperators = (id) => {
+    if (operator && result && number) {
+      setResult(computer(Number(result), Number(number), operator));
+      setOperator(id);
+      setNumber('');
+      return;
+    }
+
+    setOperator(id);
+    if (number) setResult(number);
+    setNumber('');
+    setDot(true);
+  };
+
+  const handleExpression = (id, symbol) => {
+    if (
+      id === 'equal' ||
+      id === 'ac' ||
+      (!dot && id === 'dot') ||
+      (!Number(number) && symbol === '0')
+    )
+      return;
+
+    if (!number && id === 'dot') {
+      setExpression(expression + '0.');
+      return;
+    }
+
+    setExpression(expression + symbol);
+  };
+
+  const handleResult = () => {
+    if (operator === 'equal' || !result) return;
+    setResult(computer(Number(result), Number(number), operator));
+    setOperator('equal');
+    setNumber('');
+  };
+
+  const clearDisplay = () => {
+    setNumber('');
+    setResult('');
+    setOperator('');
+    setExpression('');
+    setDot(true);
+  };
+
+  const handleButtons = (id, symbol, type) => {
+    if (type === 'number') handleNumbers(id, symbol);
+    if (type === 'math') handleOperators(id);
+    if (type === 'clear') clearDisplay();
+    if (type === 'equal') handleResult();
+    handleExpression(id, symbol);
+  };
 
   return (
     <div className="calculator">
-      <Display number={number} result={result} />
+      <Display
+        number={number || 0}
+        result={Number(result) || 0}
+        expression={expression || ''}
+      />
       <Buttons onButtons={handleButtons} />
     </div>
   );
