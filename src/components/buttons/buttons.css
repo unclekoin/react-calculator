@@ -45,10 +45,15 @@
 
 @media (max-width: 54rem) {
   .calculator__buttons {
+    height: 80%;
     grid-gap: 0.5rem;
   }
 
   .calculator__button {
     border: 3px solid;
+  }
+
+  .calculator__button.big{
+    font-size: 5rem;
   }
 }
