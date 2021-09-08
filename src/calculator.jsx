@@ -57,7 +57,7 @@ function App() {
     )
       return;
     
-    if (!number && type === 'math') {
+    if (!number && type === 'math' && operator !== 'equal') {
       setExpression((prev) => prev.slice(0, -2).trim() + symbol);
       return;
     }
