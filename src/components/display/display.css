@@ -30,3 +30,16 @@
   line-height: 1;
   color: #2d3436;
 }
+
+@media (max-width: 54rem) {
+  .calculator__display {
+    height: 10rem;
+    margin-bottom: 0.5rem;
+    padding: 0 1rem;
+    border: 3px solid;
+  }
+
+  .calculator__result {
+    font-size: 3.5rem;
+  }
+}

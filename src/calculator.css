@@ -1,6 +1,6 @@
 .calculator {
-  width: 60rem;
-  height: 60rem;
+  width: 50rem;
+  height: 50rem;
   padding: 2rem;
   position: absolute;
   top: 50%;
@@ -17,4 +17,13 @@
   border-right-color: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
   box-shadow: 1px 3px 25px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 54rem) {
+  .calculator {
+    width: 31rem;
+    height: 45rem;
+    padding: 0.5rem;
+    border: 3px solid;
+  }
 }

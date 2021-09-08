@@ -42,3 +42,13 @@
   transform: scale(0.99);
   color: #dfe6e9;
 }
+
+@media (max-width: 54rem) {
+  .calculator__buttons {
+    grid-gap: 0.5rem;
+  }
+
+  .calculator__button {
+    border: 3px solid;
+  }
+}
