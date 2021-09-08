@@ -47,14 +47,20 @@ function App() {
     setDot(true);
   };
 
-  const handleExpression = (id, symbol) => {
+  const handleExpression = (id, symbol, type) => {
     if (
       id === 'equal' ||
       id === 'ac' ||
       (!dot && id === 'dot') ||
-      (!Number(number) && symbol === '0')
+      (!Number(number) && symbol === '0') ||
+      (!number && !result && type === 'math')
     )
       return;
+    
+    if (!number && type === 'math') {
+      setExpression((prev) => prev.slice(0, -2).trim() + symbol);
+      return;
+    }
 
     if (!number && id === 'dot') {
       setExpression(expression + '0.');
@@ -84,7 +90,7 @@ function App() {
     if (type === 'math') handleOperators(id);
     if (type === 'clear') clearDisplay();
     if (type === 'equal') handleResult();
-    handleExpression(id, symbol);
+    handleExpression(id, symbol, type);
   };
 
   return (
