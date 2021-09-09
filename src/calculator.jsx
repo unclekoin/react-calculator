@@ -98,13 +98,6 @@ function App() {
     handleExpression(id, symbol, type);
   };
 
-  console.log('--------------')
-  console.log('num:', number)
-  console.log('res:', result)
-  console.log('op:', operator)
-  console.log('exp:', expression)
-  console.log('dot:', dot)
-
   return (
     <div className="calculator">
       <Display
