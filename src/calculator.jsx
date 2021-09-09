@@ -67,6 +67,11 @@ function App() {
       return;
     }
 
+    if (expression[expression.length - 1] === '.' && type === 'math') {
+      setExpression((prev) => prev.slice(0, -1) + symbol);
+      return;
+    }
+
     setExpression(expression + symbol);
   };
 
@@ -92,6 +97,13 @@ function App() {
     if (type === 'equal') handleResult();
     handleExpression(id, symbol, type);
   };
+
+  console.log('--------------')
+  console.log('num:', number)
+  console.log('res:', result)
+  console.log('op:', operator)
+  console.log('exp:', expression)
+  console.log('dot:', dot)
 
   return (
     <div className="calculator">

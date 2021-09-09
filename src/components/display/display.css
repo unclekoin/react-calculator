@@ -21,6 +21,7 @@
 .calculator__expression {
   font-size: 2.2rem;
   color: #636e72;
+  user-select: none;
 }
 
 .calculator__result {
@@ -29,6 +30,7 @@
   font-size: 5.5rem;
   line-height: 1;
   color: #2d3436;
+  user-select: none;
 }
 
 @media (max-width: 54rem) {
